@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "madeira_outdoors-FE": {
+    "madeira_outdoors-Fe": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
