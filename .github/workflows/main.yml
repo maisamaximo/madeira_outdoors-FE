@@ -3,7 +3,7 @@ name: Deploy Angular App to GitHub Pages
 on:
   push:
     branches:
-      - main 
+      - main
 
 jobs:
   build-and-deploy:
@@ -11,21 +11,21 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: '18' 
+          node-version: '20'
 
       - name: Install Dependencies
         run: npm install
 
       - name: Build Project
-        run: ng build --prod --base-href="https://maisamaximo.github.io/madeira_outdoors-FE/"
+        run: ng build --base-href="https://maisamaximo.github.io/madeira_outdoors-FE/"
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
-          branch: gh-pages 
+          branch: gh-pages
           folder: dist/madeira-outdoors-fe/browser
