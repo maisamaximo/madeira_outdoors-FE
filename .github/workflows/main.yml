@@ -22,10 +22,10 @@ jobs:
         run: npm install
 
       - name: Build Project
-        run: ng build --base-href="https://maisamaximo.github.io/madeira_outdoors-FE/"
+        run: npm run build:ssr
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
-          branch: gh-pages
+          branch: gh-pages 
           folder: dist/madeira-outdoors-fe/browser
