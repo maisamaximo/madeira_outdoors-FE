@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:madeira_outdoors-FE": "node dist/madeira-outdoors-fe/server/server.mjs",
-    "build:ssr": "ng build --prod && ng run madeira-outdoors-fe:server:production"
+    "build:ssr": "ng build --configuration=production && ng run madeira-outdoors-fe:server:production"
   },
   "private": true,
   "dependencies": {
