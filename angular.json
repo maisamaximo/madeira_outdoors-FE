@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/madeira-outdoors-fe",
+            "outputPath": "dist/madeira-outdoors-fe/browser",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
