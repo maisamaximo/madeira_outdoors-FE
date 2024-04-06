@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "madeira_outdoors-fe": {
+    "madeira-outdoors-fe": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -15,16 +15,13 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/madeira-outdoors-fe/browser",
             "index": "src/index.html",
-            "browser": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -33,63 +30,70 @@
               "src/styles.scss"
             ],
             "scripts": [],
-            "server": "src/main.server.ts",
-            "prerender": true,
-            "ssr": {
-              "entry": "server.ts"
-            }
+            "optimization": true,
+            "aot": true,
+            "outputHashing": "all",
+            "vendorChunk": true,
+            "buildOptimizer": true,
+            "sourceMap": false,
+            "extractCss": true
           },
           "configurations": {
             "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
                 }
-              ],
-              "outputHashing": "all"
+              ]
             },
             "development": {
-              "optimization": false,
-              "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "extractCss": true
             }
-          },
-          "defaultConfiguration": "production"
+          }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "madeira-outdoors-fe:build"
+          },
           "configurations": {
             "production": {
-              "buildTarget": "madeira_outdoors-FE:build:production"
+              "browserTarget": "madeira-outdoors-fe:build:production"
             },
             "development": {
-              "buildTarget": "madeira_outdoors-FE:build:development"
+              "browserTarget": "madeira-outdoors-fe:build:development"
             }
-          },
-          "defaultConfiguration": "development"
+          }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "madeira_outdoors-FE:build"
+            "browserTarget": "madeira-outdoors-fe:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "main": "src/test.ts",
+            "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
-            "inlineStyleLanguage": "scss",
+            "karmaConfig": "karma.conf.js",
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -103,7 +107,5 @@
       }
     }
   },
-  "cli": {
-    "analytics": false
-  }
+  "defaultProject": "madeira-outdoors-fe"
 }
