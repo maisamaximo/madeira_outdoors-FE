@@ -67,10 +67,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "madeira_outdoors-FE:build:production"
+              "buildTarget": "madeira-outdoors-fe:build:production"
             },
             "development": {
-              "buildTarget": "madeira_outdoors-FE:build:development"
+              "buildTarget": "madeira-outdoors-fe:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -78,7 +78,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "madeira_outdoors-FE:build"
+            "buildTarget": "madeira-outdoors-fe:build"
           }
         },
         "test": {
